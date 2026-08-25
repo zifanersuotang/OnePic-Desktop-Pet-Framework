@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onepic-desktop-pet"
+version = "0.21.0"
+description = "Privacy-safe, QA-gated PySide6 framework for building Windows desktop pets from authorized character art."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "OnePic contributors" }]
+keywords = [
+    "desktop-pet",
+    "pyside6",
+    "sprite-animation",
+    "windows",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "PySide6>=6.8,<7",
+    "Pillow>=10,<13",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+    "PyInstaller>=6,<7",
+    "PyYAML>=6,<7",
+    "psd-tools>=1.9,<2",
+    "imageio-ffmpeg>=0.5,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/zifanersuotang/OnePic-Desktop-Pet-Framework"
+Issues = "https://github.com/zifanersuotang/OnePic-Desktop-Pet-Framework/issues"
+Source = "https://github.com/zifanersuotang/OnePic-Desktop-Pet-Framework"
+
+[tool.setuptools.packages.find]
+where = ["src"]

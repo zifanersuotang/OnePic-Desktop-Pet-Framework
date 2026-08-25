@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "base_frame_count": 38,
+  "state_order": [
+    "idle",
+    "walk",
+    "sit",
+    "sleep",
+    "drag",
+    "selfie",
+    "wave",
+    "happy",
+    "shy",
+    "surprised",
+    "annoyed",
+    "sleepy",
+    "curious"
+  ],
+  "animations": {
+    "idle": {
+      "kind": "pose_sequence",
+      "count": 6,
+      "frames": [
+        {"source": "stand", "role": "standing", "x": 0, "y": 0},
+        {"source": "stand", "role": "standing", "x": 0, "y": 1},
+        {"source": "stand", "role": "standing", "x": 1, "y": 2},
+        {"source": "stand", "role": "standing", "x": 0, "y": 2},
+        {"source": "stand", "role": "standing", "x": -1, "y": 1},
+        {"source": "stand", "role": "standing", "x": 0, "y": 0}
+      ]
+    },
+    "walk": {
+      "kind": "walk_input",
+      "count": 8,
+      "phases": [
+        "contact_right",
+        "down_right",
+        "passing_left",
+        "up_left",
+        "contact_left",
+        "down_left",
+        "passing_right",
+        "up_right"
+      ],
+        "motion_factors": [0.78, 0.92, 1.14, 1.16, 0.78, 0.92, 1.14, 1.16]
+    },
+    "sit": {
+      "kind": "pose_sequence",
+      "count": 5,
+      "transition": true,
+      "frames": [
+        {"source": "stand", "role": "standing", "mass_factor": 1.0},
+        {"source": "stand", "role": "standing", "height_factor": 0.91, "mass_factor": 0.98},
+        {"source": "sit", "role": "seated", "height_factor": 1.09, "mass_factor": 0.96},
+        {"source": "sit", "role": "seated", "mass_factor": 0.98},
+        {"source": "sit", "role": "seated", "mass_factor": 1.0}
+      ]
+    },
+    "sleep": {
+      "kind": "pose_sequence",
+      "count": 5,
+      "transition": true,
+      "frames": [
+        {"source": "sit", "role": "seated", "mass_factor": 1.0},
+        {"source": "sit", "role": "seated", "mass_factor": 0.98},
+        {"source": "sleep", "role": "sleeping", "mass_factor": 0.96},
+        {"source": "sleep", "role": "sleeping", "mass_factor": 0.98},
+        {"source": "sleep", "role": "sleeping", "mass_factor": 1.0}
+      ]
+    },
+    "drag": {
+      "kind": "pose_sequence",
+      "count": 3,
+      "frames": [
+        {"source": "drag", "role": "standing", "x": -3, "y": 12},
+        {"source": "drag", "role": "standing", "x": 0, "y": 18},
+        {"source": "drag", "role": "standing", "x": 3, "y": 12}
+      ]
+    },
+    "selfie": {
+      "kind": "pose_sequence",
+      "count": 4,
+      "frames": [
+        {"source": "selfie", "role": "standing", "x": 0, "y": 0},
+        {"source": "selfie", "role": "standing", "x": -1, "y": 2},
+        {"source": "selfie", "role": "standing", "x": 1, "y": 3},
+        {"source": "selfie", "role": "standing", "x": 0, "y": 0}
+      ]
+    },
+    "wave": {"kind": "pose_sequence", "count": 1, "frames": [{"source": "wave", "role": "standing"}]},
+    "happy": {"kind": "pose_sequence", "count": 1, "frames": [{"source": "happy", "role": "standing"}]},
+    "shy": {"kind": "pose_sequence", "count": 1, "reuse": "happy", "frames": [{"source": "happy", "role": "standing"}]},
+    "surprised": {"kind": "pose_sequence", "count": 1, "frames": [{"source": "surprised", "role": "standing"}]},
+    "annoyed": {"kind": "pose_sequence", "count": 1, "frames": [{"source": "annoyed", "role": "standing"}]},
+    "sleepy": {"kind": "pose_sequence", "count": 1, "reuse": "idle", "frames": [{"source": "stand", "role": "standing"}]},
+    "curious": {"kind": "pose_sequence", "count": 1, "reuse": "happy", "frames": [{"source": "happy", "role": "standing"}]}
+  },
+  "touch_feedback": {
+    "optional_transition_sources": [
+      "actions/transparent/touch_soften.png",
+      "actions/transparent/touch_return.png"
+    ],
+    "maximum_optional_frames": 2,
+    "default_for_new_pets": 2,
+    "recommended_for_new_pets": 2,
+    "fallback_when_missing": "reuse reaction frame then idle frame",
+    "default_policy": "weighted_no_repeat",
+    "branch_weights": {"shy": 0.55, "happy": 0.45},
+    "durations_ms": {
+      "surprised": 320,
+      "reaction": 760,
+      "transition": 180,
+      "idle_blend": 160
+    },
+    "repeat_click_behavior": "ignore_until_sequence_finishes",
+    "throttle_ms": 1400
+  }
+}

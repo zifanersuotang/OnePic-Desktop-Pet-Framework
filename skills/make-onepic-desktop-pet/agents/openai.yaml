@@ -1,0 +1,4 @@
+interface:
+  display_name: "制作 OnePic 桌面宠物"
+  short_description: "40帧基础、状态闭环、双击聊天与按需进阶的一体化桌宠制作"
+  default_prompt: "使用 $make-onepic-desktop-pet 先观察当前状态，再逐步制作并验收 Windows 桌宠；默认采用40帧升级基础款和零联网双击聊天，只有我明确选择时才追加进阶动作、六帧微表情、侧走、台词、八向视线或Live2D。"

@@ -1,0 +1,18 @@
+{
+  "display_height": 220,
+  "wheel_resize_mode": "ctrl",
+  "movement_region_enabled": false,
+  "movement_region": null,
+  "movement_interval_ms": 16,
+  "movement_step": 1,
+  "walk_frame_interval_ms": 90,
+  "turn_pause_ms": 240,
+  "idle_min_ms": 3000,
+  "idle_max_ms": 7000,
+  "action_min_ms": 3500,
+  "action_max_ms": 7000,
+  "inactive_sit_ms": 300000,
+  "inactive_sleep_ms": 600000,
+  "always_on_top": true,
+  "care_simulation_enabled": false
+}

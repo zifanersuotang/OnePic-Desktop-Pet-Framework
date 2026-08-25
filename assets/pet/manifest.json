@@ -1,0 +1,130 @@
+{
+  "sources": [
+    "assets/generated/pet-sprites-alpha.png",
+    "assets/generated/idle-cycle-v3-alpha.png",
+    "assets/generated/interaction-expressions-v2-alpha.png",
+    "assets/generated/sit-transition-v4-alpha.png",
+    "assets/generated/sit-to-sleep-v2-alpha.png",
+    "assets/generated/run-cycle-v5-alpha.png",
+    "assets/generated/drag-cycle-v1-alpha.png",
+    "assets/generated/selfie-sequence-v2-alpha.png"
+  ],
+  "canvas_size": [
+    560,
+    500
+  ],
+  "target_standing_height": 450,
+  "animations": {
+    "wave": [
+      "interact/wave_01.png"
+    ],
+    "happy": [
+      "expressions/expression_01.png"
+    ],
+    "idle": [
+      "idle/idle_01.png",
+      "idle/idle_02.png",
+      "idle/idle_03.png",
+      "idle/idle_04.png",
+      "idle/idle_05.png",
+      "idle/idle_06.png"
+    ],
+    "shy": [
+      "expressions/expression_02.png"
+    ],
+    "surprised": [
+      "expressions/expression_03.png"
+    ],
+    "annoyed": [
+      "expressions/expression_04.png"
+    ],
+    "sleepy": [
+      "expressions/expression_05.png"
+    ],
+    "curious": [
+      "expressions/expression_06.png"
+    ],
+    "sit": [
+      "sit/sit_01.png",
+      "sit/sit_02.png",
+      "sit/sit_03.png",
+      "sit/sit_04.png",
+      "sit/sit_05.png"
+    ],
+    "sleep": [
+      "sleep/sleep_01.png",
+      "sleep/sleep_02.png",
+      "sleep/sleep_03.png",
+      "sleep/sleep_04.png",
+      "sleep/sleep_05.png"
+    ],
+    "walk": [
+      "walk/walk_01.png",
+      "walk/walk_02.png",
+      "walk/walk_03.png",
+      "walk/walk_04.png",
+      "walk/walk_05.png",
+      "walk/walk_06.png",
+      "walk/walk_07.png",
+      "walk/walk_08.png"
+    ],
+    "drag": [
+      "interact/drag_01.png",
+      "interact/drag_02.png",
+      "interact/drag_03.png"
+    ],
+    "selfie": [
+      "interact/selfie_01.png",
+      "interact/selfie_02.png",
+      "interact/selfie_03.png",
+      "interact/selfie_04.png"
+    ]
+  },
+  "icon": "assets/icons/pet.png",
+  "pet_id": "demo",
+  "display_name": "OnePic 普通桌宠",
+  "break_reminders": {
+    "schema_version": 1,
+    "enabled": false,
+    "schedule": {
+      "preview_seconds": 30,
+      "pause_on_fullscreen": true,
+      "reflow_on_idle": true,
+      "idle_threshold_seconds": 300,
+      "resume_grace_seconds": 120,
+      "quiet_hours": {
+        "enabled": true,
+        "start": "22:30",
+        "end": "08:00"
+      },
+      "reminders": [
+        {"id": "micro", "kind": "micro_break", "label": "10分钟微休息", "enabled": true, "interval_minutes": 10, "duration_seconds": 20, "preview_seconds": 30, "snooze_minutes": 2},
+        {"id": "long", "kind": "long_break", "label": "30分钟长休息", "enabled": true, "interval_minutes": 30, "duration_seconds": 60, "preview_seconds": 60, "snooze_minutes": 5},
+        {"id": "pomodoro", "kind": "pomodoro", "label": "25/5角色番茄钟", "enabled": true, "auto_start": false, "work_minutes": 25, "break_minutes": 5, "long_break_minutes": 15, "focus_sessions_per_long_break": 4, "duration_seconds": 300, "preview_seconds": 30, "snooze_minutes": 2},
+        {"id": "water", "kind": "water", "label": "喝水提醒", "enabled": true, "interval_minutes": 45, "duration_seconds": 12, "preview_seconds": 20, "snooze_minutes": 5},
+        {"id": "sedentary", "kind": "sedentary", "label": "久坐活动提醒", "enabled": true, "interval_minutes": 60, "duration_seconds": 30, "preview_seconds": 30, "snooze_minutes": 5}
+      ]
+    },
+    "state_mapping": {
+      "preview": "curious",
+      "active": "wave",
+      "complete": "happy",
+      "snooze": "curious",
+      "skip": "curious",
+      "celebrate": "happy",
+      "reflow": "curious"
+    },
+    "dialogue": {
+      "preview": ["{label}快到时间啦，先把手上的事情收个尾吧。"],
+      "active": ["{label}时间到。完成、稍后或跳过都由你决定。"],
+      "complete": ["做得好，{label}完成啦。"],
+      "snooze": ["好，我稍后再来提醒你。"],
+      "skip": ["这次先跳过，我会继续按计划陪你。"],
+      "celebrate": ["休息也是认真生活的一部分。"],
+      "reflow": ["检测到勿扰、全屏或离开状态，提醒已重新安排。"]
+    },
+    "sounds": {"enabled_default": false, "files": {}},
+    "privacy": {"network_default": "off", "collect_window_titles": false, "statistics_enabled_default": false},
+    "test_mode": {"minute_seconds": 0.1, "preview_seconds": 0.3, "duration_seconds": 3}
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "schema_version": 2,
+  "pet_id": "replace-me",
+  "display_name": "新桌宠",
+  "source_type": "unknown",
+  "selfie_required": true,
+  "pet_mode": "full-body",
+  "style": "preserve_original",
+  "rendering_mode": "sprite",
+  "recommended_display_height": 220,
+  "canvas_size": [
+    560,
+    500
+  ],
+  "standing_height": 450,
+  "seated_height": 350,
+  "sleeping_height": 255,
+  "animation_recipe": "config/animation-recipe.v1.json",
+  "visual_mass": {
+    "mode": "walk_median_safe",
+    "static_tolerance_ratio": 0.12,
+    "transition_tolerance_ratio": 0.22,
+    "minimum_target_ratio": 0.6,
+    "exemptions": {
+      "sleep": "躺卧姿态按配方目标质量检查，不与站立轮廓直接比较",
+      "sit": "坐下过程按声明式 mass_factor 检查"
+    }
+  },
+  "walk_qa": {
+    "minimum_shape_change_ratio": 0.012,
+    "maximum_shared_scale_delta": 0.0,
+    "minimum_body_rise_pixels": 2,
+    "maximum_loop_seam_ratio": 2.0
+  },
+  "action_source_gate": {
+    "required": true,
+    "minimum_candidates": 2,
+    "maximum_candidates": 3,
+    "checks": [
+      "limb_integrity",
+      "single_action",
+      "identity_consistency",
+      "no_fused_props",
+      "clean_silhouette"
+    ]
+  },
+  "touch_feedback": {
+    "policy": "weighted_no_repeat",
+    "branch_weights": {"shy": 0.55, "happy": 0.45},
+    "default_transition_frame_count": 2,
+    "recommended_optional_frames": 2,
+    "throttle_ms": 1400,
+    "repeat_click_behavior": "ignore_until_sequence_finishes"
+  },
+  "companion_behaviors": {
+    "cursor_chase": {
+      "enabled": false,
+      "default_enabled": false,
+      "speed_pixels_per_second": 180,
+      "hug_distance_px": 56,
+      "release_distance_px": 105,
+      "facing_dead_zone_px": 22,
+      "slowdown_distance_px": 180,
+      "minimum_speed_ratio": 0.28
+    },
+    "keyboard_companion": {
+      "enabled": false,
+      "poll_interval_ms": 80,
+      "burst_window_ms": 1800,
+      "burst_key_count": 5,
+      "reaction_cooldown_ms": 5000,
+      "reaction_state": "wave"
+    },
+    "focus_session": {
+      "enabled": false,
+      "duration_minutes": 25,
+      "celebration_state": "happy"
+    },
+    "signature_action": {
+      "enabled": true,
+      "label": "招牌动作",
+      "state": "wave",
+      "duration_ms": 2200
+    }
+  },
+  "dialogue_system": {
+    "enabled": false,
+    "bubble_duration_ms": 3400,
+    "cooldown_ms": 2400,
+    "no_repeat_window": 3,
+    "max_text_length": 60,
+    "max_lines_per_action": 24,
+    "speak_chance": {
+      "manual": 1.0,
+      "touch": 0.75,
+      "companion": 0.55,
+      "autonomous": 0.14
+    },
+    "action_labels": {},
+    "lines": {}
+  },
+  "care_simulation": {
+    "enabled": false
+  },
+  "break_reminders": {
+    "schema_version": 1,
+    "enabled": false,
+    "schedule": {
+      "preview_seconds": 30,
+      "pause_on_fullscreen": true,
+      "reflow_on_idle": true,
+      "idle_threshold_seconds": 300,
+      "resume_grace_seconds": 120,
+      "quiet_hours": {
+        "enabled": true,
+        "start": "22:30",
+        "end": "08:00"
+      },
+      "reminders": [
+        {
+          "id": "micro",
+          "kind": "micro_break",
+          "label": "10分钟微休息",
+          "enabled": true,
+          "interval_minutes": 10,
+          "duration_seconds": 20,
+          "preview_seconds": 30,
+          "snooze_minutes": 2
+        },
+        {
+          "id": "long",
+          "kind": "long_break",
+          "label": "30分钟长休息",
+          "enabled": true,
+          "interval_minutes": 30,
+          "duration_seconds": 60,
+          "preview_seconds": 60,
+          "snooze_minutes": 5
+        },
+        {
+          "id": "pomodoro",
+          "kind": "pomodoro",
+          "label": "25/5角色番茄钟",
+          "enabled": true,
+          "auto_start": false,
+          "work_minutes": 25,
+          "break_minutes": 5,
+          "long_break_minutes": 15,
+          "focus_sessions_per_long_break": 4,
+          "duration_seconds": 300,
+          "preview_seconds": 30,
+          "snooze_minutes": 2
+        },
+        {
+          "id": "water",
+          "kind": "water",
+          "label": "喝水提醒",
+          "enabled": true,
+          "interval_minutes": 45,
+          "duration_seconds": 12,
+          "preview_seconds": 20,
+          "snooze_minutes": 5
+        },
+        {
+          "id": "sedentary",
+          "kind": "sedentary",
+          "label": "久坐活动提醒",
+          "enabled": true,
+          "interval_minutes": 60,
+          "duration_seconds": 30,
+          "preview_seconds": 30,
+          "snooze_minutes": 5
+        }
+      ]
+    },
+    "state_mapping": {
+      "preview": "curious",
+      "active": "wave",
+      "complete": "happy",
+      "snooze": "curious",
+      "skip": "curious",
+      "celebrate": "happy",
+      "reflow": "curious"
+    },
+    "dialogue": {
+      "preview": ["{label}快到时间啦，先把手上的事情收个尾吧。"],
+      "active": ["{label}时间到。完成、稍后或跳过都由你决定。"],
+      "complete": ["做得好，{label}完成啦。"],
+      "snooze": ["好，我稍后再来提醒你。"],
+      "skip": ["这次先跳过，我会继续按计划陪你。"],
+      "celebrate": ["休息也是认真生活的一部分。"],
+      "reflow": ["检测到勿扰、全屏或离开状态，提醒已重新安排。"]
+    },
+    "sounds": {
+      "enabled_default": false,
+      "files": {}
+    },
+    "privacy": {
+      "network_default": "off",
+      "collect_window_titles": false,
+      "statistics_enabled_default": false
+    },
+    "test_mode": {
+      "minute_seconds": 0.1,
+      "preview_seconds": 0.3,
+      "duration_seconds": 3
+    }
+  },
+  "extension_animations": {},
+  "directional_mouse_follow": {
+    "enabled": false
+  },
+  "sharing": {
+    "selfie_approved_sha256": null
+  },
+  "character_file": "candidate/approved.png",
+  "selfie_file": "source/selfie.png",
+  "actions_directory": "actions/transparent",
+  "walk_directory": "walk/frames",
+  "runtime_directory": "runtime",
+  "review_directory": "review"
+}

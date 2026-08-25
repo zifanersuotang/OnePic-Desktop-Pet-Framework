@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_channel_name">桌宠运行状态</string>
+    <string name="notification_channel_description">显示桌宠正在桌面运行的常驻通知</string>
+    <string name="notification_text">可以聊天、互动，或随时停止悬浮桌宠</string>
+    <string name="companion_key_missing">○ 尚未保存 API Key</string>
+    <string name="companion_key_saved">✓ API Key 已由 Android Keystore 加密保存</string>
+    <string name="companion_key_error">✗ %1$s</string>
+</resources>

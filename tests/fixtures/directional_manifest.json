@@ -1,0 +1,33 @@
+{
+  "stationary": true,
+  "walk_motion_factors": [1.0],
+  "animations": {
+    "wave": ["../../assets/pet/idle/idle_01.png"],
+    "happy": ["../../assets/pet/idle/idle_01.png"],
+    "idle": ["../../assets/pet/idle/idle_01.png"],
+    "shy": ["../../assets/pet/idle/idle_01.png"],
+    "surprised": ["../../assets/pet/idle/idle_01.png"],
+    "annoyed": ["../../assets/pet/idle/idle_01.png"],
+    "sleepy": ["../../assets/pet/idle/idle_01.png"],
+    "curious": ["../../assets/pet/idle/idle_01.png"],
+    "sit": ["../../assets/pet/idle/idle_01.png"],
+    "sleep": ["../../assets/pet/idle/idle_01.png"],
+    "walk": ["../../assets/pet/idle/idle_01.png"],
+    "drag": ["../../assets/pet/idle/idle_01.png"],
+    "selfie": ["../../assets/pet/idle/idle_01.png"]
+  },
+  "directional_mouse_follow": {
+    "enabled": true,
+    "frames": {
+      "center": "../../assets/pet/idle/idle_01.png",
+      "north": "../../assets/pet/idle/idle_01.png",
+      "north_east": "../../assets/pet/idle/idle_01.png",
+      "east": "../../assets/pet/idle/idle_01.png",
+      "south_east": "../../assets/pet/idle/idle_01.png",
+      "south": "../../assets/pet/idle/idle_01.png",
+      "south_west": "../../assets/pet/idle/idle_01.png",
+      "west": "../../assets/pet/idle/idle_01.png",
+      "north_west": "../../assets/pet/idle/idle_01.png"
+    }
+  }
+}

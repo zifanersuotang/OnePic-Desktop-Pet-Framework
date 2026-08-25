@@ -1,0 +1,31 @@
+name: Feature request
+description: 提议可复用且隐私安全的改进
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: 这个需求解决什么实际问题？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and trade-offs
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundaries
+      options:
+        - label: 方案不会要求提交客户/私人素材。
+          required: true
+        - label: 如涉及第三方代码或素材，我已说明许可来源。
+          required: true

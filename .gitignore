@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.test-sandbox/
+.test-tmp/
+.tmp/
+.pnpm-store/
+pytest-cache-files-*/
+pytest-temp-*/
+.coverage
+htmlcov/
+
+# 虚拟环境和构建产物
+.venv/
+node_modules/
+build/
+dist/
+.release-staging/
+*.egg-info/
+tools/OnePicReleaseSigner.exe
+
+# 编辑器和系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 用户私有素材：保留说明文件，但不提交图片
+user_assets/*
+!user_assets/README.md
+
+# 本地日志和临时输出
+*.log
+*.tmp
+
+# Android 本地构建、签名与私有宠物素材
+android/.gradle/
+android/local.properties
+android/**/build/
+android/app/src/main/assets/pet/
+android/app/src/main/assets/pet.staging/
+android/app/src/main/assets/pet.previous/
+android/*.jks
+android/*.keystore
+android/keystore.properties
+*.apk
+*.aab

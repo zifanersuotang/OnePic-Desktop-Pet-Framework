@@ -1,0 +1,8 @@
+{
+  "project_type": "desktop_pet",
+  "framework_id": "io.github.zifanersuotang.onepic-desktop-pet-framework.py312-pyside6.v1",
+  "runtime": "python_3.12_pyside6",
+  "renderer": "qt_widgets_sprite_with_source_only_live2d_adapter",
+  "platform": "windows_10_11",
+  "entry": "main.py"
+}

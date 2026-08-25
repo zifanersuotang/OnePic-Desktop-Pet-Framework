@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://onepic.local/schema/animation-recipe.v1.json",
+  "title": "OnePic 38-frame base animation recipe",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "base_frame_count",
+    "state_order",
+    "animations",
+    "touch_feedback"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "base_frame_count": {"const": 38},
+    "state_order": {
+      "type": "array",
+      "minItems": 13,
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    },
+    "animations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["kind", "count"],
+        "properties": {
+          "kind": {
+            "enum": ["pose_sequence", "walk_input"]
+          },
+          "count": {"type": "integer", "minimum": 1},
+          "frames": {"type": "array"}
+        }
+      }
+    },
+    "touch_feedback": {
+      "type": "object",
+      "required": [
+        "optional_transition_sources",
+        "maximum_optional_frames",
+        "default_for_new_pets",
+        "default_policy",
+        "durations_ms"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

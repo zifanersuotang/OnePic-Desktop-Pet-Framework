@@ -1,0 +1,94 @@
+plugins {
+    id "com.android.application"
+}
+
+def signingEnvironment = [
+    "ONEPIC_ANDROID_KEYSTORE",
+    "ONEPIC_ANDROID_KEY_ALIAS",
+    "ONEPIC_ANDROID_KEYSTORE_PASSWORD",
+    "ONEPIC_ANDROID_KEY_PASSWORD"
+]
+def releaseSigningReady = signingEnvironment.every { System.getenv(it) }
+def onepicApplicationId = providers.gradleProperty("onepicApplicationId")
+    .orElse("com.onepic.desktop.pet")
+    .get()
+def onepicDisplayName = providers.gradleProperty("onepicDisplayName")
+    .orElse("OnePic Demo Pet")
+    .get()
+def onepicVersionCode = providers.gradleProperty("onepicVersionCode")
+    .orElse("1")
+    .get()
+    .toInteger()
+def onepicVersionName = providers.gradleProperty("onepicVersionName")
+    .orElse("0.1.0")
+    .get()
+
+android {
+    namespace = "com.onepic.desktop.pet"
+    compileSdk {
+        version = release(36) {
+            it.minorApiLevel = 1
+        }
+    }
+
+    defaultConfig {
+        applicationId onepicApplicationId
+        minSdk 26
+        targetSdk 36
+        versionCode onepicVersionCode
+        versionName onepicVersionName
+        manifestPlaceholders = [
+            onepicAppLabel: onepicDisplayName + "桌宠"
+        ]
+    }
+
+    signingConfigs {
+        if (releaseSigningReady) {
+            release {
+                storeFile file(System.getenv("ONEPIC_ANDROID_KEYSTORE"))
+                storePassword System.getenv("ONEPIC_ANDROID_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("ONEPIC_ANDROID_KEY_ALIAS")
+                keyPassword System.getenv("ONEPIC_ANDROID_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        release {
+            minifyEnabled false
+            if (releaseSigningReady) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    lint {
+        abortOnError = true
+        checkReleaseBuilds = true
+    }
+}
+
+dependencies {
+    testImplementation "junit:junit:4.13.2"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-Xlint:deprecation")
+}
+
+gradle.taskGraph.whenReady { graph ->
+    def requestsRelease = graph.allTasks.any {
+        it.path.endsWith(":assembleRelease") || it.path.endsWith(":bundleRelease")
+    }
+    if (requestsRelease && !releaseSigningReady) {
+        throw new GradleException(
+            "Release signing is not configured. Set ONEPIC_ANDROID_KEYSTORE, " +
+            "ONEPIC_ANDROID_KEY_ALIAS, ONEPIC_ANDROID_KEYSTORE_PASSWORD, and " +
+            "ONEPIC_ANDROID_KEY_PASSWORD."
+        )
+    }
+}

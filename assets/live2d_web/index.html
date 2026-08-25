@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OnePic Live2D Idle Host</title>
+    <style>
+      html, body, #live2d-canvas {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+      }
+      #blink-overlay {
+        position: fixed;
+        inset: 5px 6px;
+        width: calc(100% - 12px);
+        height: calc(100% - 10px);
+        object-fit: contain;
+        opacity: 0;
+        pointer-events: none;
+        transform-origin: 50% 50%;
+      }
+      #status {
+        position: fixed;
+        left: 6px;
+        bottom: 4px;
+        color: rgba(255, 255, 255, 0.55);
+        font: 10px/1.2 sans-serif;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="live2d-canvas"></canvas>
+    <img id="blink-overlay" alt="">
+    <div id="status"></div>
+    <script src="live2dcubismcore.min.js"></script>
+    <script src="live2d.bundle.js"></script>
+  </body>
+</html>

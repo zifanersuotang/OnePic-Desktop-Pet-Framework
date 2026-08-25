@@ -1,0 +1,16 @@
+{
+  "name": "onepic-live2d-web-runtime",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --minify --format=iife --outfile=../../assets/live2d_web/live2d.bundle.js"
+  },
+  "dependencies": {
+    "easy-live2d": "0.4.4",
+    "pixi.js": "8.18.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.8"
+  }
+}
