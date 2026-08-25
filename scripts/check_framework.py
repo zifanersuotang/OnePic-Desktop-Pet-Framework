@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import tomllib
@@ -51,6 +52,16 @@ TEXT_SUFFIXES = {
     ".xml",
     ".yaml",
     ".yml",
+}
+REQUIRED_DISTRIBUTIONS = {
+    "imageio-ffmpeg",
+    "pillow",
+    "psd-tools",
+    "pyinstaller",
+    "pyside6",
+    "pytest",
+    "pyyaml",
+    "requests",
 }
 
 
@@ -114,6 +125,17 @@ def main() -> int:
         project = {}
     if project.get("requires-python") != ">=3.12,<3.13":
         errors.append("Python 运行时边界必须保持 >=3.12,<3.13")
+    requirement_groups = [project.get("dependencies", [])]
+    requirement_groups.extend(project.get("optional-dependencies", {}).values())
+    declared_distributions = {
+        re.split(r"[<>=!~\[\s;]", str(requirement), maxsplit=1)[0]
+        .replace("_", "-")
+        .lower()
+        for group in requirement_groups
+        for requirement in group
+    }
+    for missing in sorted(REQUIRED_DISTRIBUTIONS - declared_distributions):
+        errors.append(f"pyproject.toml 缺少必需依赖声明：{missing}")
 
     files = tracked_files()
     relative_files = {

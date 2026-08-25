@@ -36,6 +36,7 @@ dev = [
     "PyYAML>=6,<7",
     "psd-tools>=1.9,<2",
     "imageio-ffmpeg>=0.5,<1",
+    "requests>=2.32,<3",
 ]
 
 [project.urls]

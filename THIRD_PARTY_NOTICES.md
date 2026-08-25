@@ -12,6 +12,7 @@ OnePic Desktop Pet Framework depends on third-party projects. Their licenses rem
 - PyYAML — MIT License
 - psd-tools — MIT License
 - imageio-ffmpeg — BSD-2-Clause License; bundled FFmpeg binaries have separate licensing obligations
+- Requests — Apache License 2.0
 
 Consult the exact installed package versions and their license files before distributing a binary.
 
